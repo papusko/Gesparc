@@ -1,0 +1,55 @@
+<div class="row color-bg">
+
+
+    <div class="col-md-12 about-text">
+
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <td colspan="1">
+                    
+                        <fieldset>
+<div class="container">
+        <div class="row">
+            <div class="panel panel-primary filterable">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Liste des Vehicules de l'entreprise</h3>
+                    <div class="pull-right">
+                        <button class="btn btn-default btn-xs btn-filter"><span
+                                class="glyphicon glyphicon-filter"></span> Filter
+                        </button>
+                    </div>
+                </div>
+                <table class="table" margin=10px padding=10px>
+                    <thead>
+                    <tr class="filters">
+						<th><input type="text" class="form-control" placeholder="Immatriculation " disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Numero de chassis " disabled></th>
+						<th><input type="text" class="form-control" placeholder="Mises en circulation" disabled></th>
+						<th><input type="text" class="form-control" placeholder="Couleur" disabled></th>
+						<th><input type="text" class="form-control" placeholder="Etat" disabled></th>
+						<th><input type="text" class="form-control" placeholder="Categories" disabled></th>
+						<th><input type="text" class="form-control" placeholder="Acquisition" disabled></th>
+						<th><input type="text" class="form-control" placeholder="Nombre de place" disabled></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+					{% for v in vehicules %}
+                    <tr>
+                        <td>{{ v.immatriculation}}</td>
+						<td>{{ v.numeroDeChassis}}</td>
+						<td>{{ v.dateMiseCirculation()|date('d/m/y')}}</td>
+						<td>{{ v.couleur}}</td>
+						<td>{{ v.etat}}</td>
+						<td>{{ v.conducteurs.nom}} {{ v.conducteurs.prenom}}</td>
+						<td>{{ v.acquisition.typeAcquision}}</td>
+						<td>{{ v.nombrePlace}}</td>
+
+                    </tr>
+					{% endfor %}
+                    </tbody>
+                </table>
+				</div>
+				
+              
+            </div>

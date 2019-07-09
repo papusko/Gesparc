@@ -1,0 +1,6 @@
+{% extends 'default/vehicules.html.twig' %}
+{% block title %}Ajouter  un Projet {% endblock %}
+{% block form %}{% endblock %}
+{% block content %}
+{% include 'AppBundle:vignettes:doni.html.twig' with {'form' : form,'message':message, 'assurances':assurances}  %}
+{% endblock %}

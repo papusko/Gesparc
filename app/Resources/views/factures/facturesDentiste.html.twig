@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+          <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+</style>
+
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+        {% block stylesheets %}{% endblock %}
+    </head>
+{% block body %}
+  
+<div class="container">
+        <div class="row">
+            <div class="panel panel-primary filterable">          
+
+ 
+        <p><img src="{{path ~ asset('bundles/dist/img/logoldk.jpg') }}" height=120, width=300 >&nbsp;&nbsp; 
+         
+<h2 color="blue" align="right" > <strong>Dakar le :</strong> {{ "now"|date("d M Y") }}</br>
+</h2></p>
+
+          </div>
+        </div>
+  </div>
+&ensp;&ensp;&ensp;&ensp;
+
+<div class="row" align="center">
+    <h3 align="right"><Strong>
+      {% for d in dentistes %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+     
+     Docteur: 
+          
+              {{d.prenom}} {{d.nom}}
+
+                        {{d.adresse}}
+                        {{d.cabinet}}
+    </div>
+    
+  </div>
+  {% endfor %}
+</div>              
+                
+    </Strong></h3>    
+</div>
+
+
+  
+
+        <p ><Strong><h2 align="center">Facturation du mois de : {{ "now"|date("M Y") }}</h2><Strong></p>
+      
+ 
+ 
+      </tr>
+      
+    </tbody>
+  </table>
+            </div>
+    </div>
+  </div>
+    
+&ensp;&ensp;
+    
+
+
+  <table class="table" style="width:100%">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Designation</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for fa in factures %}    
+      <tr>
+        <td>{{fa.creationAt()|date('d/m/y') }}</td>
+        <td>{{fa.designation}} </br> {{fa.designation2}} </br> {{fa.designation3}}</br> {{fa.designation4}} </td>        
+        <td>{{fa.quantite}} </br> {{fa.quantite2}}</br> {{fa.quantite3}}</br> {{fa.quantite4}} </br></td>
+        <td>{{fa.prix}} </br> {{fa.prix2}}</br> {{fa.prix3}}</br> {{fa.prix4}} </br></td>
+        <td>{{fa.total}} </br> {{fa.total2}}</br> {{fa.total3}}</br> {{fa.total4}} </br></td>
+      </tr>
+      {% set sommes = 0 %}
+         {% set sommes = fa.total+fa.total2+fa.total3+fa.total4 %}
+      <th colspan="4" text-align="center">Solde</th><td>{{sommes}} </td>
+
+      {% endfor %}
+    </tbody>
+  </table>
+<p align="right">{% set sommes = 0 %}
+{% set totaux = 0 %}
+ {% for fa in factures %}
+    {% set sommes = fa.total+fa.total2+fa.total3+fa.total4 %}
+    {% set totaux = totaux+sommes %}
+ {% endfor %}</p>
+
+   <table class="table" border= "0px" style="width:50%" align="right">
+    <thead>
+    </thead>
+    <tbody>
+      <th colspan="4" text-align="center" >Total</th><td>{{totaux}} F-CFA </td>
+      
+    </tbody>
+  </table>
+
+  &ensp;&ensp;&ensp;&ensp;
+</br></br></br></br></br></br>
+<h2 align="right"><u>Le Gérant</u></h2>
+          </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+ </body>
+
+
+</html>

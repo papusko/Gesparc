@@ -1,0 +1,36 @@
+{% extends 'layoute.html.twig' %}
+
+{% block title %}Liste des dentiste{% endblock %}
+
+{% block body %}
+<div class="container">
+  
+  <p><h2>Liste des Dentiste:</h2></p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Prénom et Nom</th>
+        <th>Cabinet</th>
+        <th>Téléphone</th>
+        <th>Adresse</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for i in dentistes %}     
+      <tr>
+        <td>{{i.nomComplet }}</td>
+        <td>{{i.cabinet}}</td>
+        <td>{{i.telephone}}</td>
+        <td>{{i.adresse}}</td>
+        <td><a href="{{ path('dentistes_facture', { 'dentistes': i.id }) }}" target="_bank">
+      <span class="badge" data-tip="voir les intervention liées à cet projet" tabindex="0"  >{{"facture du mois " }}</span> </a></td>
+
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+
+  
+</div>
+{% endblock %}

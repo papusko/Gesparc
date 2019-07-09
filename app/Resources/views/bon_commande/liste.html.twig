@@ -1,0 +1,34 @@
+{% extends 'layoute.html.twig' %}
+
+{% block title %} non livrésListe des Bons de commandes disponibles{% endblock %}
+
+{% block body %}
+<div class="container">
+  
+  <p><h2>Liste des Bons de commandes disponibles non livrés</h2></p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date Commande</th>
+        <th>Dentiste</th>
+        <th>Designation</th>
+        <th>Quantité</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bc in bon %}    
+      <tr>
+        <td>{{bc.creationAt()|date('d/m/y') }}</td>
+        <td>{{bc.dentiste.nomComplet }}</td>
+        <td>{{bc.designation}}</br>{{bc.designation2}}</br>{{bc.designation3}}</br>{{bc.designation4}}</td>
+        <td>{{bc.quantite}}</br>{{bc.quantite2}}</br>{{bc.quantite3}}</br>{{bc.quantite4}}</td>
+        <td><a href="{{ path('bon_modifier', {'id': bc.id }) }}">Modifier commande </a></td>
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+
+  
+</div>
+{% endblock %}

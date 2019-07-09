@@ -1,0 +1,18 @@
+{% extends 'layoute.html.twig' %}
+
+{% block title %}Inscription dentiste{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Enregistrement d'un dentiste  ✅</h1>
+    {{ form_start(form) }}
+		    
+		    	<div >{{ form_row(form.nomComplet) }}</div>
+		    	<div >{{ form_row(form.adresse) }}</div>	
+		    	<div >{{ form_row(form.telephone) }}</div>
+		    	<div >{{ form_row(form.cabinet) }}</div>
+    {{ form_widget(form) }}
+    <button  class="btn btn-primary"> Ajouter Dentiste</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

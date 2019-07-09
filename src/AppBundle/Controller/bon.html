@@ -1,0 +1,59 @@
+
+		/**     *
+     * @Route("/missions/liste", name="missions_liste")
+     */
+	public function listeAction(Request $request)
+	{
+		$repository = $this->getDoctrine()->getRepository('AppBundle:Missions');
+		
+		$missions = $repository->findAll();
+		
+				$snappy = $this->get("knp_snappy.pdf");
+				$html = $this->renderView("missions/liste.html.twig", array("title" => "votre pdf",'missions'=>$missions) );
+				
+				$filename = "missions";
+				
+				return new Response (
+										$snappy->getOutputFromHtml($html),
+										200,
+										array(
+												'Content-Type'=>'application/pdf',
+												'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'		
+											)										
+									);
+	
+		
+		
+	}
+	
+	
+	
+	
+	
+	/**     *
+     * @Route("/ordre/de/missions", name="ordre_de_mission")
+     */
+	public function ordreAction(Request $request, $id)
+	{
+		$repository = $this->getDoctrine()->getRepository('AppBundle:Missions');
+		
+		$missions = $repository->findById($id);
+		
+				$snappy = $this->get("knp_snappy.pdf");
+				$html = $this->renderView("missions/liste.html.twig", array("title" => "votre pdf",'missions'=>$missions) );
+				
+				$filename = "missions";
+				
+				return new Response (
+										$snappy->getOutputFromHtml($html),
+										200,
+										array(
+												'Content-Type'=>'application/pdf',
+												'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'		
+											)										
+									);
+	
+		
+		
+	}
+	

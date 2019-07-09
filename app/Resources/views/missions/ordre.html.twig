@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ordre de  | Mission </title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <style>
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+</style>
+</head>
+<body>
+
+  
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body >
+<header>
+            <img src="{{  path ~ asset('bundles/dcmali.jpg')  }}" align="left" class="img-thumbnail">
+        </header></br></br></br></br></br></br>
+								
+								
+				<p></p>	</br></br>	
+
+<div>
+				
+				<h2 align="center">ORDRE DE MISSION N° {% for m in missions %} 0{{m.id}} {% endfor %} /2018/DG</h2></div>
+
+
+
+        
+                    
+                <table class="table" style="width:100%">
+                    <thead>
+							<tr class="filters">
+								<th>Nom et prénom</th>
+								<th>N°Mle</th>
+								<th>Fonction </th>
+								<th>Moyen de transport</th>
+							</tr>
+							
+                    </thead>
+                    <tbody>
+							{% for m in missions %}
+							<tr>
+							<td>{{ m.conducteurs.nom}} {{ m.conducteurs.prenom}}</td>
+							<td>0{{ m.conducteurs.id}}</td>
+								<td>Chauffeur</td>
+								<td>{{ m.vehicules.categories.typeCategorie}} </td>
+
+							</tr>
+							{% endfor %}
+							</tbody>
+                </table>
+				
+				</br></br>
+				
+			
+{% for m in missions %}
+
+<b>Devra se rendre à :</b> {{ m.TypeMissions }}</br></br>
+<b>Objet : </b>{{ m.ObjetMissions }}</br></br>
+			<b>	Date de départ :</b> {{ m.dateDebut()|date('d/m/y') }}</br></br>
+
+           <b>  Moyen de Transport :</b> {{ m.vehicules.categories.typeCategorie}} {{ m.vehicules.marques}} N° {{ m.vehicules.immatriculation}}</br></br>
+			
+  
+
+            <b>  Date de Retour :</b>  {{ m.dateFin()|date('d/m/y') }}.</br></br>
+
+<b>Imputation Budgétaire :</b> G001GC.</br></br>
+
+<big><b><ins>Le Directeur Général</ins></b></big></br></br><div class="pull-left image">
+          <img src="{{ path ~ asset('bundles/image/signature.jpg') }}" class="img-circle" alt="User Image"></br><big><b><u>Mahazou dit Baba CISSET </u></b></big></br>
+        </div>
+
+
+{% endfor %}
+</section>
+</body>
+<footer>
+</br></br></br></br></br></br></br></br></br>
+<div align="center" ><big><hn>DCS MALI SARL –</hn> </big> Immeuble ABK II, Bur. : 111 - BP 1185 - Bamako – Rép. du Mali</br>
+ Tél. : (223) 20 29 11 09 / (223) 62 52 94 94</br>
+E-mail: info@dcsmali.com – Site Web: www.dcsmali.com</br>
+<hn>SOCIETE A RESPONSABILITE LIMITEE AU CAPITAL DE 1.000.000, RC : MA.BKO.2009.B.3918     NIF : 084113971D</hn> </div>
+</footer>
+
+</html>
+
+
+
+
+

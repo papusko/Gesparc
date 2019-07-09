@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+          <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+</style>
+  
+
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+        {% block stylesheets %}{% endblock %}
+    </head>
+{% block body %}
+  
+<div class="container">
+        <div class="row">
+            <div class="panel panel-primary filterable">          
+
+ 
+        <p><img src="{{path ~ asset('bundles/dist/img/logoldk.jpg') }}" height=120, width=300 >&nbsp;&nbsp; 
+         
+<h2 color="blue" align="right" > <strong>Dakar le :</strong> {% for fa in facture %}
+              {{fa.creationAt()|date('d/m/y') }}
+                  
+      
+      {% endfor %}</br>
+</h2></p>
+
+          </div>
+        </div>
+  </div>
+&ensp;&ensp;&ensp;&ensp;
+
+<div class="row" align="center">
+    <h3 align="right"><Strong> Docteur: 
+          {% for fa in facture %}
+              {{fa.dentiste.nomComplet}}</br>
+
+                        {{fa.dentiste.adresse}}</br>
+                        {{fa.dentiste.cabinet}}              
+              
+    </Strong></h3>
+     {% endfor %}     
+</div>
+
+
+  
+
+        <p ><Strong><h2 align="center">Facture Numéro   {% for fa in facture %}    
+      
+          LDKNBfa00{{fa.id}}</h2><Strong></p>
+      
+ 
+ 
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+            </div>
+    </div>
+  </div>
+    
+&ensp;&ensp;
+    
+
+
+  <table class="table" style="width:100%">
+    <thead>
+      <tr>
+        <th>Designation</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for fa in facture %}    
+      <tr>
+        <td>{{fa.designation}}</br> {{fa.designation2}} </br> {{fa.designation3}}</br> {{fa.designation4}} </td>        
+        <td>{{fa.quantite}}</br> {{fa.quantite2}}</br> {{fa.quantite3}}</br> {{fa.quantite4}} </br></td>
+        <td>{{fa.prix}} </br> {{fa.prix2}}</br> {{fa.prix3}}</br> {{fa.prix4}} </br></td>
+        <td>{{fa.total}} </br> {{fa.total2}} </br> {{fa.total3}}</br> {{fa.total4}} </br></td>
+        
+
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+    <table class="pable" style="width:100%">
+    <thead>
+      <tr>
+        <th text-align ="center">Somme à payer</th>
+        <th>{% for fa in facture %}{{fa.total + fa.total2 + fa.total3 + fa.total4}} F-CFA {% endfor %}</th>
+      </tr>
+    </thead>
+
+<thead>  </table>
+<p align="right">
+{% set sommes = 0 %}
+{% set totaux = 0 %}
+ {% for fa in facture %}
+    {% set sommes = fa.total+fa.total2+fa.total3+fa.total4 %}
+    {% set totaux = totaux+sommes %}
+ {% endfor %}
+{% for fa in facture %} Montant : {{sommes}} F-CFA {% endfor %}</p>
+          </div>
+    </div>
+  </div>
+
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+<footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+     
+    </div>
+    <!-- Default to the left -->
+    <p align="center"> Bon pour acceptation de confirmité </br> Garantie 1 an contre des defauts de fabrication</strong> tout droit reservé.
+  </footer>
+{% endblock %}
+
+ </body>
+
+
+</html>
